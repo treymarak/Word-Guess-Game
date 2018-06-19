@@ -17,13 +17,18 @@ var answers = [ "Springfield", "Duff Beer", "Milhouse", "Santa's Little Helper",
 "Maggie Simpson", "Saxophone", "Sideshow Bob", "Ned Flanders", "Moe's Tavern", "Waylon Smithers" ]
 
  var score = 0;
+ var questionIndex = 0;
  var guess;
  var guesses = [ ];
+ var counter;
+ var space;
 
 
 
  // make elements..
 var showQuestions = document.getElementById("ask");
+
+var showAnswer = document.getElementById("section");
 
 var showScore = document.getElementById("total");
 
@@ -32,3 +37,6 @@ var showScore = document.getElementById("total");
 
 
  //make functions.. 
+ for (var i = 0; i < questions.length; i++) {
+   
+ }
