@@ -11,6 +11,10 @@ var questions = [
     { q: "Who is Mr Burns' assistant?", a: "Waylon Smithers" }
   ];
 
+var alphabet = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+ "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" ]
+
+
   var score = 0;
   var questionIndex = 0;
 
