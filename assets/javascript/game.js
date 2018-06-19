@@ -1,12 +1,4 @@
 //make variables...
-
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h",
-        "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-        "t", "u", "v", "w", "x", "y", "z"];
-
-
-
-
 var questions = [
     { q: "Where do the Simpson's live?", a: "Springfield" },
     { q: "What does Homer drink?", a: "Duff Beer" },
@@ -20,23 +12,22 @@ var questions = [
     { q: "Who is Mr Burns' assistant?", a: "Waylon Smithers" }
   ];
 
-  var questions = [ "Where do the Simpson's live?", "What does Homer drink?", 
-  "Who is Bart's bestfriend?", "What is the name of Bart's dog?", "Who shot Mr. Burns?", 
-  "What instrument does Lisa play?", "Who is always trying to kill Bart?", 
-  "What is the name of the Simpson's next door neighbor?", "What is the name of the bar where Homer drinks?", 
-  "Who is Mr Burns' assistant?" ];
 
- var answer = [ "Springfield", "Duff Beer", "Milhouse", "Santa's Little Helper", 
- "Maggie Simpson", "Saxophone", "Sideshow Bob", "Ned Flanders", "Moe's Tavern", 
- "Waylon Smithers" ]
-
-
+var pickedQuestion;
+  
  var score = 0;
  var questionIndex = 0;
  var guess;
  var guesses = [ ];
  var counter;
  var space;
+
+ function startupNew() {
+   pickedQuestion = questions[Math.floor(Math.random() * questions.length)];
+   
+   document.getElementById("#ask").innerHTML = pickedQuestion;
+ }
+
 
 
 
@@ -59,6 +50,13 @@ var showScore = document.getElementById("total");
 
  //Answer section...
 
+ document.onkeyup = function(event) {
+        userText.textContent = event.key;
+          
 
+};
+
+var questions = event.key.toLowerCase();
+startupNew();
 
 
