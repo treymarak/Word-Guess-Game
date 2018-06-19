@@ -10,3 +10,25 @@ var questions = [
     { q: "What is the name of the bar where Homer drinks?", a: "Moe's Tavern" },
     { q: "Who is Mr Burns' assistant?", a: "Waylon Smithers" }
   ];
+
+  var score = 0;
+  var questionIndex = 0;
+
+
+    // Function to render questions.
+    function renderQuestion() {
+      // If there are still more questions, render the next one.
+      if (questionIndex <= (questions.length - 1)) {
+        document.querySelector("#ask").innerHTML = questions[questionIndex].q;
+      }
+      // If there aren't, render the end game screen.
+      else {
+        document.querySelector("#ask").innerHTML = "Game Over!";
+        document.querySelector("#total").innerHTML = "Final Score: " + score + " out of " + questions.length;
+      }
+    }
+
+    // Function that updates the score...
+    function updateScore() {
+      document.querySelector("#total").innerHTML = "Score: " + score;
+    }

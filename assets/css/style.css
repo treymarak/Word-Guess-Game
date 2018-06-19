@@ -26,3 +26,15 @@ img{
     top: 131px;
 
 }
+
+#total {
+
+    background-color: #F65132;
+    width: 175px;
+    height: 175px;
+    position: fixed;
+    top: 500px;
+    left: 90px;
+
+
+}
