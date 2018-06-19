@@ -1,3 +1,5 @@
+//make variables...
+
 var questions = [
     { q: "Where do the Simpson's live?", a: "Springfield" },
     { q: "What does Homer drink?", a: "Duff Beer" },
@@ -11,28 +13,22 @@ var questions = [
     { q: "Who is Mr Burns' assistant?", a: "Waylon Smithers" }
   ];
 
-var alphabet = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
- "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" ]
+var answers = [ "Springfield", "Duff Beer", "Milhouse", "Santa's Little Helper", 
+"Maggie Simpson", "Saxophone", "Sideshow Bob", "Ned Flanders", "Moe's Tavern", "Waylon Smithers" ]
+
+ var score = 0;
+ var guess;
+ var guesses = [ ];
 
 
-  var score = 0;
-  var questionIndex = 0;
+
+ // make elements..
+var showQuestions = document.getElementById("ask");
+
+var showScore = document.getElementById("total");
 
 
-    // Function to render questions.
-    function renderQuestion() {
-      // If there are still more questions, render the next one.
-      if (questionIndex <= (questions.length - 1)) {
-        document.querySelector("#ask").innerHTML = questions[questionIndex].q;
-      }
-      // If there aren't, render the end game screen.
-      else {
-        document.querySelector("#ask").innerHTML = "Game Over!";
-        document.querySelector("#total").innerHTML = "Final Score: " + score + " out of " + questions.length;
-      }
-    }
 
-    // Function that updates the score...
-    function updateScore() {
-      document.querySelector("#total").innerHTML = "Score: " + score;
-    }
+
+
+ //make functions.. 
