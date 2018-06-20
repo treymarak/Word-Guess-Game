@@ -28,11 +28,13 @@ var pickedAnswer;
 
   event.key.toLowerCase();
 
-
-  var audio 
+  var audioElement = document.createElement("audio");
+  audioElement.setAttribute("src", "assets/audio/The_Simpsons_Opening.mp3");
+  
    pickedQuestion = questions[Math.floor(Math.random() * questions.length)];
    
    var question = pickedQuestion.q;
+   var answer = pickedAnswer.a;
 
    document.getElementById("ask").innerHTML = question;
 
@@ -59,6 +61,6 @@ var pickedAnswer;
 
 
 
-onkeyup();
+
 
 
