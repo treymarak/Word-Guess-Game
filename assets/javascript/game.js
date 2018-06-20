@@ -25,18 +25,16 @@ var pickedQuestion;
  function startupNew() {
    pickedQuestion = questions[Math.floor(Math.random() * questions.length)];
    
-   document.getElementById("#ask").innerHTML = pickedQuestion;
+   var question = pickedQuestion.q;
+
+   document.getElementById("ask").innerHTML = question;
+
+   
  }
 
-
-
+var answer = 
 
  // Elements...
-var showQuestions = document.getElementById("ask");
-
-var showAnswer = document.getElementById("section");
-
-var showScore = document.getElementById("total");
 
 
 
@@ -50,13 +48,14 @@ var showScore = document.getElementById("total");
 
  //Answer section...
 
- document.onkeyup = function(event) {
-        userText.textContent = event.key;
-          
+//  document.onkeyup = function(event) {
+//         userText.textContent = event.key;
+//         event.key.toLowerCase();
 
-};
+// };
 
-var questions = event.key.toLowerCase();
+
+
 startupNew();
 
 
