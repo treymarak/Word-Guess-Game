@@ -21,6 +21,7 @@ var pickedQuestion;
  var guesses = [ ];
  var counter;
  var space;
+ var display; 
 
  function startupNew() {
    pickedQuestion = questions[Math.floor(Math.random() * questions.length)];
