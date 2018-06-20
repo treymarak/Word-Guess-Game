@@ -14,6 +14,7 @@ var questions = [
 
 
 var pickedQuestion;
+var pickedAnswer;
   
  var score = 0;
  var questionIndex = 0;
@@ -33,7 +34,7 @@ var pickedQuestion;
    
  }
 
-var answer = 
+
 
  // Elements...
 
@@ -49,11 +50,34 @@ var answer =
 
  //Answer section...
 
-//  document.onkeyup = function(event) {
-//         userText.textContent = event.key;
-//         event.key.toLowerCase();
+ document.onkeyup = function(event) {
+        userText.textContent = event.key;
+         event.key.toLowerCase();
 
-// };
+    var answer = pickedAnswer.a;
+
+   wordholder = document.getElementById("section");
+  correct = document.createElement("ul");
+
+  for (i = 0; i < answer.length; i++) {
+    correct.setAttribute("id", "my-answer");
+    guess = document.createElement("li");
+    guess.setAttribute("class", "guess");
+    if (answer[i] === "_") {
+      guess.innerText = "_";
+      space = 1;
+    }
+    else {
+      guess.innerText = "_";
+    }
+     guesses.push(guess);
+     wordholder.appendChild(correct);
+     correct.appendChild(guess);
+
+  }
+
+
+ };
 
 
 
