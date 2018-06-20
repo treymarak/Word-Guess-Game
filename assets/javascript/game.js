@@ -24,15 +24,20 @@ var pickedAnswer;
  var space;
  var display; 
 
- function startupNew() {
+ document.onkeyup = function(event) {
+
+  event.key.toLowerCase();
+
+
+  var audio 
    pickedQuestion = questions[Math.floor(Math.random() * questions.length)];
    
    var question = pickedQuestion.q;
 
    document.getElementById("ask").innerHTML = question;
 
-   
- }
+  };
+
 
 
 
@@ -50,37 +55,10 @@ var pickedAnswer;
 
  //Answer section...
 
- document.onkeyup = function(event) {
-        userText.textContent = event.key;
-         event.key.toLowerCase();
-
-    var answer = pickedAnswer.a;
-
-   wordholder = document.getElementById("section");
-  correct = document.createElement("ul");
-
-  for (i = 0; i < answer.length; i++) {
-    correct.setAttribute("id", "my-answer");
-    guess = document.createElement("li");
-    guess.setAttribute("class", "guess");
-    if (answer[i] === "_") {
-      guess.innerText = "_";
-      space = 1;
-    }
-    else {
-      guess.innerText = "_";
-    }
-     guesses.push(guess);
-     wordholder.appendChild(correct);
-     correct.appendChild(guess);
-
-  }
-
-
- };
 
 
 
-startupNew();
+
+onkeyup();
 
 
