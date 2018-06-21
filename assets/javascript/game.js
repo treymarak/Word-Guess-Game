@@ -13,7 +13,7 @@ var getQuestions = [
   ];
 
   
- var guess = 0;
+ var guessRemaining = 7;
  var guesses = [];
  var currentQuestion;
  var display = ''; 
@@ -42,7 +42,7 @@ function startUp() {
   function restart(){
 
     audio.pause();
-    guess = 0;
+    guessRemaining = 7;
     guesses = [];
     currentQuestion = startUp();
     display = '';
@@ -52,7 +52,7 @@ function startUp() {
     for (var i = 0; i < currentQuestion.answer.length; i++){
       if (currentQuestion.answer.charAt(i) !== " "){
          display += "_";
-         guess += 1;
+        //  guessRemaining += 1;
 
       }
 
@@ -72,44 +72,46 @@ function startUp() {
    document.onkeyup = function(event) {
 
     console.log(event.key);
+    audio = new Audio("assets/audio/The_Simpsons_Opening.mp3");
+        audio.play();
    
     for (var i = 0; i < guesses.length; i++) {
       
         if (guesses[i] === event.key) {
-          console.log("Already guessed");
+         
           return;
         }
 
     }
-
+      console.log("Past duplicate check")
       guesses.push(event.key);
 
-
+      var userGuess = event.key.toLowerCase();
       var string = '';
       var correct_guess = false;
 
-      for (var i = 0; currentQuestion.answer.length; i++) {
-        console.log("currentQuestion.answer = " + currentQuestion.answer);
-        console.log(currentQuestion.answer.charAt(i).toUpperCase());
+      for (var i = 0; i < currentQuestion.answer.length; i++) {
+ 
 
-      if ((currentQuestion.answer.charAt(i).toUpperCase() == event.key) || 
-         (currentQuestion.answer.charAt(i).toLowerCase() == event.key)) {
+      if (userGuess === currentQuestion.answer.charAt(i)) {
           string += currentQuestion.answer.charAt(i);
-          guess--; 
+          guessRemaining--; 
           correct_guess = true;
+          audio = new Audio("assets/audio/woohoo.mp3");
+        audio.play();
 
          }
          else {
            string += display.charAt(i);
          }
       }
-
+         console.log("sanity check")
       if (correct_guess === false) {
         score++;
         audio = new Audio("assets/audio/doh1.mp3");
         audio.play();
         
-        if (score === 7 ){
+        if (score === 10 ){
 
         }
       }
@@ -118,7 +120,7 @@ function startUp() {
 
       section.textContent = display;
 
-   if (guess === 0) {
+   if (guessRemaining === 7) {
 
     audio = new Audio("assets/audio/The_Simpsons_Ending.mp3");
         audio.play();
