@@ -12,10 +12,6 @@ var getQuestions = [
     { question: "Who is Mr Burns' assistant?", answer: "Waylon Smithers" }
   ];
 
-  function startUp() { 
-    return getQuestions[Math.floor(Math.random() * getQuestions.length)];
-    
-   }
   
  var guess = 0;
  var guesses = [];
@@ -25,9 +21,21 @@ var getQuestions = [
 
 var audio = new Audio("assets/audio/The_Simpsons_Opening.mp3");
 
+// make elements...
+
 var ask = document.getElementById("ask");
 var section = document.getElementById("section");
 var total = document.getElementById("total");
+
+
+// create functions...
+
+
+function startUp() { 
+  return getQuestions[Math.floor(Math.random() * getQuestions.length)];
+  
+ }
+
 
 
 
@@ -37,7 +45,6 @@ var total = document.getElementById("total");
     guess = 0;
     guesses = [];
     currentQuestion = startUp();
-    console.log(currentQuestion);
     display = '';
     score = 0;
     
@@ -84,6 +91,7 @@ var total = document.getElementById("total");
       for (var i = 0; currentQuestion.answer.length; i++) {
         console.log("currentQuestion.answer = " + currentQuestion.answer);
         console.log(currentQuestion.answer.charAt(i).toUpperCase());
+
       if ((currentQuestion.answer.charAt(i).toUpperCase() == event.key) || 
          (currentQuestion.answer.charAt(i).toLowerCase() == event.key)) {
           string += currentQuestion.answer.charAt(i);
