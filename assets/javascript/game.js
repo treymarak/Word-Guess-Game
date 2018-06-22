@@ -15,6 +15,8 @@ var getQuestions = [
   
  var guessRemaining = 7;
  var guesses = [];
+ var correctGuesses = [];
+ var wrongGuesses = [];
  var currentQuestion;
  var display = ''; 
  var score = 0;
@@ -70,8 +72,10 @@ function startUp() {
 
 
    document.onkeyup = function(event) {
+    var userGuess = event.key.toLowerCase();
+    var answer  = currentQuestion.answer.toLowerCase();
+    // console.log(event.key);
 
-    console.log(event.key);
     audio = new Audio("assets/audio/The_Simpsons_Opening.mp3");
         audio.play();
    
@@ -83,48 +87,64 @@ function startUp() {
         }
 
     }
-      console.log("Past duplicate check")
+      // console.log("Past duplicate check")
       guesses.push(event.key);
+      // console.log(guesses);
 
-      var userGuess = event.key.toLowerCase();
-      var string = '';
-      var correct_guess = false;
+      console.log(answer, userGuess)
 
-      for (var i = 0; i < currentQuestion.answer.length; i++) {
+
+    if (answer.indexOf(userGuess)) {
+
+        correctGuesses.push(event.key);
+    }
+
+    else {
+
+      wrongGuesses.push(event.key);
+    }
+
+    console.log('arrays', correctGuesses, wrongGuesses);
+      
+      // var hiddenAnswer = '';
+      // var correct_guess = false;
+
+      // for (var i = 0; i < currentQuestion.answer.length; i++) {
  
+ 
+      // if (userGuess === currentQuestion.answer.charAt(i)) {
+      //     hiddenAnswer += currentQuestion.answer.charAt(i);
+      //     correctGuesses = currentQuestion.answer.charAt(i);
+      //     guessRemaining--; 
+      //     correct_guess = true;
+      //     audio = new Audio("assets/audio/woohoo.mp3");
+      //   audio.play();
 
-      if (userGuess === currentQuestion.answer.charAt(i)) {
-          string += currentQuestion.answer.charAt(i);
-          guessRemaining--; 
-          correct_guess = true;
-          audio = new Audio("assets/audio/woohoo.mp3");
-        audio.play();
-
-         }
-         else {
-           string += display.charAt(i);
-         }
-      }
-         console.log("sanity check")
-      if (correct_guess === false) {
-        score++;
-        audio = new Audio("assets/audio/doh1.mp3");
-        audio.play();
+      //    }
+      //    else {
+      //      hiddenAnswer += display.charAt(i);
+      //    }
+      // }
+      //    // console.log("sanity check")
+      // if (correct_guess === false) {
+      //   score++;
+      //   audio = new Audio("assets/audio/doh1.mp3");
+      //   audio.play();
         
-        if (score === 10 ){
+      //   if (score === 10 ){
 
-        }
-      }
+      //   }
+      // }
 
-      display.string;
+      // display.hiddenAnswer;
 
-      section.textContent = display;
+  //     section.textContent = hiddenAnswer;
 
-   if (guessRemaining === 7) {
+  //  if (guessRemaining === 7) {
 
-    audio = new Audio("assets/audio/The_Simpsons_Ending.mp3");
-        audio.play();
-   }
+  //   audio = new Audio("assets/audio/The_Simpsons_Ending.mp3");
+  //       audio.play();
+  //  }
 
   }
 
