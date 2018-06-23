@@ -1,4 +1,4 @@
-//make variables...
+// make variables...
 var getQuestions = [
     { question: "Where do the Simpson's live?", answer: "springfield" },
     { question: "What does Homer drink?", answer: "duff beer" },
@@ -11,6 +11,8 @@ var getQuestions = [
     { question: "What is the name of the bar where Homer drinks?", answer: "moes tavern" },
     { question: "Who is Mr Burns' assistant?", answer: "waylon smithers" }
   ];
+
+
 
   
  var guessRemaining = 0;
@@ -74,8 +76,7 @@ function startUp() {
    document.onkeyup = function(event) {
     var userGuess = event.key.toLowerCase();
     var answer  = currentQuestion.answer.toLowerCase();
-    var
-    // console.log(event.key);
+    console.log(event.key);
 
     // audio = new Audio("assets/audio/The_Simpsons_Opening.mp3");
     //     audio.play();
@@ -95,18 +96,22 @@ function startUp() {
       console.log(answer, userGuess)
 
 
-    if (guesses.indexOf(answer)) {
+    if (answer.indexOf(userGuess)!= -1) {
 
-      
+      correctGuesses.push(userGuess);
        
     }
 
     else {
 
-      wrongGuesses;
+      wrongGuesses.push(userGuess);
 
     }
 
+    //loop through answer
+    //answer[i] is in correctGuesses
+    //if it is then we show the letter, else we show the _
+  
     console.log('arrays', correctGuesses, wrongGuesses);
       
       var hiddenAnswer = '';
@@ -116,16 +121,17 @@ function startUp() {
  
  
       if (userGuess === currentQuestion.answer.charAt(i)) {
-          hiddenAnswer += answer.charAt(i);
+          hiddenAnswer += currentQuestion.answer.charAt(i);
           // correctGuesses += currentQuestion.answer.charAt(i);
           correct_guess = true;
+          guessRemaining--; 
           audio = new Audio("assets/audio/woohoo.mp3");
         audio.play();
 
          }
          else {
            hiddenAnswer += display.charAt(i);
-           guessRemaining--; 
+        
          }
       }
          // console.log("sanity check")
