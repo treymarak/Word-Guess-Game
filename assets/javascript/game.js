@@ -74,6 +74,7 @@ function startUp() {
    document.onkeyup = function(event) {
     var userGuess = event.key.toLowerCase();
     var answer  = currentQuestion.answer.toLowerCase();
+    var
     // console.log(event.key);
 
     // audio = new Audio("assets/audio/The_Simpsons_Opening.mp3");
@@ -94,14 +95,15 @@ function startUp() {
       console.log(answer, userGuess)
 
 
-      for (var i = 0; i < correctGuesses.length; i++) {
-      
-        if (correctGuesses[i] === event.key) {
-         
-         answer.indexOf(correctGuesses);
+    if (guesses.indexOf(answer)) {
 
-          return;
-        }
+      
+       
+    }
+
+    else {
+
+      wrongGuesses;
 
     }
 
