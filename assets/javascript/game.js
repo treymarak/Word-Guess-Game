@@ -94,15 +94,15 @@ function startUp() {
       console.log(answer, userGuess)
 
 
-    if (answer.indexOf(userGuess)) {
-
+      for (var i = 0; i < correctGuesses.length; i++) {
       
-       
-    }
+        if (correctGuesses[i] === event.key) {
+         
+         answer.indexOf(correctGuesses);
 
-    else {
+          return;
+        }
 
-      
     }
 
     console.log('arrays', correctGuesses, wrongGuesses);
