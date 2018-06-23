@@ -23,8 +23,12 @@ var getQuestions = [
  var display = ''; 
  var score = 0;
  var startGame = false;
+ var correctLetter = false;
 
 var audioOpen = new Audio("assets/audio/The_Simpsons_Opening.mp3");
+var audioCorrect = new Audio("assets/audio/woohoo.mp3");
+var audioWrong = new Audio("assets/audio/doh1.mp3");
+var audioWin = new Audio("assets/audio/The_Simpsons_Ending.mp3");
 
 // make elements...to connect to the html
 
@@ -131,23 +135,31 @@ function startUp() {
     if (correctGuesses.indexOf(answer[i])!== -1){
 
    hiddenAnswer += answer[i];
+  audioCorrect.play();
+
 
     }
      else {
        
      hiddenAnswer += display[i];
+    audioWrong.play();
 
      }
-
     }
+
+
+
+    
+    
+  
+
+
     //loop through answer
     //answer[i] is in correctGuesses
     //if it is then we show the letter, else we show the _
   
     console.log('arrays', correctGuesses, wrongGuesses);
       
-      
-      // var correct_guess = false;
 
       // for (var i = 0; i < currentQuestion.answer.length; i++) {
  
