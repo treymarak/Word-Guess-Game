@@ -22,8 +22,9 @@ var getQuestions = [
  var currentQuestion;
  var display = ''; 
  var score = 0;
+ var startGame = false;
 
-var audio = new Audio("assets/audio/The_Simpsons_Opening.mp3");
+var audioOpen = new Audio("assets/audio/The_Simpsons_Opening.mp3");
 
 // make elements...to connect to the html
 
@@ -45,7 +46,7 @@ function startUp() {
 
   function restart(){
 
-    audio.pause();
+    audioOpen.pause();
     guessRemaining = 0;
     guesses = [];
     currentQuestion = startUp();
@@ -74,6 +75,18 @@ function startUp() {
 
 
    document.onkeyup = function(event) {
+
+    if(!startGame) {
+      
+     startGame = true;
+     
+     restart();
+     audioOpen.play();
+
+     return;
+
+    }
+
     var userGuess = event.key.toLowerCase();
     var answer  = currentQuestion.answer.toLowerCase();
     console.log(event.key);
@@ -96,9 +109,10 @@ function startUp() {
       console.log(answer, userGuess)
 
 
-    if (answer.indexOf(userGuess)!= -1) {
+    if (answer.indexOf(userGuess)!== -1) {
 
       correctGuesses.push(userGuess);
+
        
     }
 
@@ -108,42 +122,60 @@ function startUp() {
 
     }
 
+    var hiddenAnswer = '';
+
+    for (i = 0; i < answer.length; i++){
+
+      
+
+    if (correctGuesses.indexOf(answer[i])!== -1){
+
+   hiddenAnswer += answer[i];
+
+    }
+     else {
+       
+     hiddenAnswer += display[i];
+
+     }
+
+    }
     //loop through answer
     //answer[i] is in correctGuesses
     //if it is then we show the letter, else we show the _
   
     console.log('arrays', correctGuesses, wrongGuesses);
       
-      var hiddenAnswer = '';
-      var correct_guess = false;
+      
+      // var correct_guess = false;
 
-      for (var i = 0; i < currentQuestion.answer.length; i++) {
+      // for (var i = 0; i < currentQuestion.answer.length; i++) {
  
  
-      if (userGuess === currentQuestion.answer.charAt(i)) {
-          hiddenAnswer += currentQuestion.answer.charAt(i);
-          // correctGuesses += currentQuestion.answer.charAt(i);
-          correct_guess = true;
-          guessRemaining--; 
-          audio = new Audio("assets/audio/woohoo.mp3");
-        audio.play();
+      // if (userGuess === currentQuestion.answer.charAt(i)) {
+      //     hiddenAnswer += currentQuestion.answer.charAt(i);
+      //     // correctGuesses += currentQuestion.answer.charAt(i);
+      //     correct_guess = true;
+      //     guessRemaining--; 
+      //     audio = new Audio("assets/audio/woohoo.mp3");
+      //   audio.play();
 
-         }
-         else {
-           hiddenAnswer += display.charAt(i);
+      //    }
+      //    else {
+      //      hiddenAnswer += display.charAt(i);
         
-         }
-      }
-         // console.log("sanity check")
-      if (correct_guess === false) {
-        guessRemaining++;
-        audio = new Audio("assets/audio/doh1.mp3");
-        audio.play();
+      //    }
+      // }
+      //    // console.log("sanity check")
+      // if (correct_guess === false) {
+      //   guessRemaining++;
+      //   audio = new Audio("assets/audio/doh1.mp3");
+      //   audio.play();
         
-        if (guessRemaining === 7 ){
+      //   if (guessRemaining === 0 ){
 
-        }
-      }
+      //   }
+      // }
 
 
       section.textContent = hiddenAnswer;
@@ -158,9 +190,6 @@ function startUp() {
 
   }
 
-
-
-  restart();
 
 
 
