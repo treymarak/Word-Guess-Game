@@ -116,13 +116,15 @@ function startUp() {
     if (answer.indexOf(userGuess)!== -1) {
 
       correctGuesses.push(userGuess);
-
+      audioCorrect.play();
        
     }
 
     else {
 
       wrongGuesses.push(userGuess);
+      audioWrong.play();
+      guessRemaining++;
 
     }
 
@@ -135,14 +137,13 @@ function startUp() {
     if (correctGuesses.indexOf(answer[i])!== -1){
 
    hiddenAnswer += answer[i];
-  audioCorrect.play();
+  
 
 
     }
      else {
        
      hiddenAnswer += display[i];
-    audioWrong.play();
 
      }
     }
@@ -194,7 +195,7 @@ function startUp() {
 
       total.textContent = score;
 
-   if (score === 0) {
+   if (score === 7) {
 
     // audio = new Audio("assets/audio/The_Simpsons_Ending.mp3");
     //     audio.play();
