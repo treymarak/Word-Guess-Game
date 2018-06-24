@@ -21,7 +21,7 @@ var getQuestions = [
  var wrongGuesses = [];
  var currentQuestion;
  var display = ''; 
- var score = 0;
+ var score = 7;
  var startGame = false;
  var correctLetter = false;
 
@@ -55,7 +55,7 @@ function startUp() {
     guesses = [];
     currentQuestion = startUp();
     display = '';
-    score = 0;
+    score = 7;
     
 
     for (var i = 0; i < currentQuestion.answer.length; i++){
@@ -117,30 +117,36 @@ function startUp() {
 
       correctGuesses.push(userGuess);
       audioCorrect.play();
-      guessRemaining--;
        
     }
+
+   
 
     else {
 
       wrongGuesses.push(userGuess);
       audioWrong.play();
-      score++;
+      score--;
       
-      if (score === 7){
+      if (score === 0){
 
         alert("You Lose!")
+
       }
 
+      if (guessRemaining === 0) {
+
+        alert("You Win!!");
+       
+        audioWin.play();
+    
+    
+      }
 
     }
 
 
-   if (guessRemaining === 0) {
 
-   audioWin.play();
-
-  }
 
     var hiddenAnswer = '';
 
@@ -205,20 +211,13 @@ function startUp() {
       //   }
       // }
 
-      var html =
-          "Guesses Remaining: " 
-          
-          + guessRemaining + 
-
-          "Score " 
-          
-          + score;
+  
           
 
 
       section.textContent = hiddenAnswer;
 
-      total.textContent = html;
+      total.textContent = ("Guesses Remaining " + score);
      
 
 
