@@ -61,7 +61,7 @@ function startUp() {
     for (var i = 0; i < currentQuestion.answer.length; i++){
       if (currentQuestion.answer.charAt(i) !== " "){
          display += "_";
-         score += 1;
+         guessRemaining += 1;
 
       }
 
@@ -117,6 +117,7 @@ function startUp() {
 
       correctGuesses.push(userGuess);
       audioCorrect.play();
+      guessRemaining--;
        
     }
 
@@ -124,9 +125,22 @@ function startUp() {
 
       wrongGuesses.push(userGuess);
       audioWrong.play();
-      guessRemaining++;
+      score++;
+      
+      if (score === 7){
+
+        alert("You Lose!")
+      }
+
 
     }
+
+
+   if (guessRemaining === 0) {
+
+   audioWin.play();
+
+  }
 
     var hiddenAnswer = '';
 
@@ -144,6 +158,7 @@ function startUp() {
      else {
        
      hiddenAnswer += display[i];
+  
 
      }
     }
@@ -190,16 +205,22 @@ function startUp() {
       //   }
       // }
 
+      var html =
+          "Guesses Remaining: " 
+          
+          + guessRemaining + 
+
+          "Score " 
+          
+          + score;
+          
+
 
       section.textContent = hiddenAnswer;
 
-      total.textContent = score;
+      total.textContent = html;
+     
 
-   if (score === 7) {
-
-    // audio = new Audio("assets/audio/The_Simpsons_Ending.mp3");
-    //     audio.play();
-   }
 
   }
 
