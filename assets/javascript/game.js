@@ -15,13 +15,13 @@ var getQuestions = [
 
 
   
- var guessRemaining = 0;
+ var score = 0;
  var guesses = [];
  var correctGuesses = [];
  var wrongGuesses = [];
  var currentQuestion;
  var display = ''; 
- var score = 7;
+ var guessRemaining = 10;
  var startGame = false;
  var correctLetter = false;
 
@@ -35,6 +35,7 @@ var audioWin = new Audio("assets/audio/The_Simpsons_Ending.mp3");
 var ask = document.getElementById("ask");
 var section = document.getElementById("section");
 var total = document.getElementById("total");
+var letters = document.getElementById("letters");
 
 
 // create functions...
@@ -51,17 +52,15 @@ function startUp() {
   function restart(){
 
     audioOpen.pause();
-    guessRemaining = 0;
     guesses = [];
     currentQuestion = startUp();
     display = '';
-    score = 7;
+    guessRemaining = 10;
     
 
     for (var i = 0; i < currentQuestion.answer.length; i++){
       if (currentQuestion.answer.charAt(i) !== " "){
          display += "_";
-         guessRemaining += 1;
 
       }
 
@@ -117,7 +116,6 @@ function startUp() {
 
       correctGuesses.push(userGuess);
       audioCorrect.play();
-       
     }
 
    
@@ -126,22 +124,14 @@ function startUp() {
 
       wrongGuesses.push(userGuess);
       audioWrong.play();
-      score--;
+      guessRemaining--;
       
-      if (score === 0){
+      if (guessRemaining === 0){
 
         alert("You Lose!")
 
       }
 
-      if (guessRemaining === 0) {
-
-        alert("You Win!!");
-       
-        audioWin.play();
-    
-    
-      }
 
     }
 
@@ -211,13 +201,27 @@ function startUp() {
       //   }
       // }
 
-  
-          
+      setTimeout(function(){
 
+        if (hiddenAnswer === answer){
+
+          alert("You Win!!");
+     
+          audioWin.play();
+  
+  
+        }
+
+      }, 1)
+
+   
 
       section.textContent = hiddenAnswer;
 
-      total.textContent = ("Guesses Remaining " + score);
+      console.log(wrongGuesses, letters);
+      
+      total.textContent = ("Guesses Remaining " + guessRemaining);
+      letters.textContent = wrongGuesses.join(" ");
      
 
 
